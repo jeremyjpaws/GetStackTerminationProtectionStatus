@@ -46,10 +46,10 @@ public class App
 
         logger.log("Getting stack attributes...");
         String description = myStack.getDescription();
-        Boolean bTermationProtection = myStack.getEnableTerminationProtection();
+        Boolean bTerminationProtection = myStack.getEnableTerminationProtection();
         logger.log("Description: " + description);
-        logger.log("Protection:  " + bTermationProtection);
-        String result = "Termination protection for " + stackName + " is " + bTermationProtection;
+        logger.log("Protection:  " + bTerminationProtection);
+        String result = "Termination protection for " + stackName + " is " + bTerminationProtection;
         logger.log(result);
         return result;
     }
