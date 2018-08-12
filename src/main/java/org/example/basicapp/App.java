@@ -9,6 +9,7 @@ import com.amazonaws.services.cloudformation.model.DescribeStacksRequest;
 import com.amazonaws.services.cloudformation.model.Stack;
 import com.amazonaws.services.cloudformation.model.StackResource;
 import com.amazonaws.services.cloudformation.model.StackStatus;
+import com.amazonaws.services.cloudformation.*;
 import com.amazonaws.services.cloudformation.AmazonCloudFormationClientBuilder;
 import com.amazonaws.services.cloudformation.model.*;
 import com.amazonaws.regions.Regions;
@@ -29,7 +30,7 @@ public class App
     public String myHandler(String stackName, Context context) {
         LambdaLogger logger = context.getLogger();
         logger.log("Beginning...");
-        final AmazonCloudFormation cfn = AmazonCloudFormationClientBuilder.standard()
+        AmazonCloudFormation cfn = AmazonCloudFormationClientBuilder.standard()
           .withRegion(Regions.US_EAST_1)
           .build();
 
