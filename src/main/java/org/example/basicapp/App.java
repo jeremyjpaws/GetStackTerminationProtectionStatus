@@ -28,24 +28,28 @@ public class App
 
     public String myHandler(String stackName, Context context) {
         LambdaLogger logger = context.getLogger();
-
+        logger.log("Beginning...");
         final AmazonCloudFormation cfn = AmazonCloudFormationClientBuilder.standard()
           .withRegion(Regions.US_EAST_1)
           .build();
 
         Stack myStack = null;
 
+        logger.log("Describing stacks...");
         List<Stack> stacks = cfn.describeStacks(new DescribeStacksRequest()
           .withStackName(stackName))
           .getStacks();
 
         myStack = stacks.get(0);
 
+
+        logger.log("Getting stack attributes...");
         String description = myStack.getDescription();
         Boolean bTermationProtection = myStack.getEnableTerminationProtection();
         logger.log("Description: " + description);
         logger.log("Protection:  " + bTermationProtection);
         String result = "Termination protection for " + stackName + " is " + bTermationProtection;
+        logger.log(result);
         return result;
     }
 }
